@@ -1,0 +1,13 @@
+da:
+  views:
+    about:
+      index:
+        header_html: "Jeg er Nikolaj <a href='https://github.com/NikoDyring', target='_blank'><span class='inline-flex relative text-sky-500 before:absolute before:inset-0 before:bg-sky-200 dark:before:bg-sky-500 before:opacity-30 before:-z-10 before:-rotate-2 before:translate-y-1/4'>@NikoDyring</span></a> Jensen 🤟"
+        short_bio:
+          title: 'Kort Introduktion'
+          text_html: "Mit navn er Nikolaj Dyring, og jeg brænder for at lære de nyeste og bedste teknologier, uanset om det er frontend eller backend. Jeg nyder at skabe interessante og responsive applikationer med fokus på brugervenlighed og testing. Jeg elsker at arbejde i hurtige miljøer. Jeg excellerer i at samarbejde med teams med forskellige vidensæt. En alsidig programmør med interesser inden for softwareudvikling, VR/AR og spiludvikling. Tilpasningsdygtig og selvmotiveret lærende. Interesseret i nye programmeringsteknologier og løbende selvforbedring. Jeg er i øjeblikket ikke på udkig efter nye muligheder. <br><br> Selv om der ikke er en Wikipedia-side om mig (undskyld folkens!), er der en karrieretidslinje nedenfor."
+        experience:
+          title: 'Erhvervserfaring'
+        lets_connect:
+          title: 'Giv mig et praj!'
+          text_html: "Jeg er altid frisk på connecte med andre via <a href='mailto: nikodyring@gmail.com', class='font-medium text-sky-500 hover:underline'>e-mail</a>, <a href='https ://www.linkedin.com/in/nikolaj-dyring-jensen', class='font-medium text-sky-500 hover:underline'>LinkedIn</a> og <a href='https://twitter .com/nikodyring', class='font-medium text-sky-500 hover:underline'>Twitter</a> for at chatte om projekter og ideer. I øjeblikket leder jeg ikke efter freelanceprojekter/andre muligheder, da jeg nyder min tid hos Inpay. Jeg er dog altid åben for en chat eller codereviews! 🚀🚀🚀"

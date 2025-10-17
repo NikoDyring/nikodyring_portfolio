@@ -1,0 +1,11 @@
+en:
+  views:
+    articles:
+      index:
+        introduction:
+          header_html: "I write about coding and becoming a <span class='inline-flex relative text-sky-500 before:absolute before:inset-0 before:bg-sky-200 dark:before:bg-sky-500 before:opacity-30 before:-z-10 before:-rotate-2 before:translate-y-1/4'>full-time</span> maker."
+          header_text: 'Motorcyclist, developer, and aspiring game-maker. I write about coding, prototyping, and my journey becoming a full-time maker. 🚀'
+        articles:
+          header: 'Latest Articles'
+        projects:
+          header: 'Interesting Projects'

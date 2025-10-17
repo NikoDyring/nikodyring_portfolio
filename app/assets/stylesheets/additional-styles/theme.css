@@ -1,15 +1,3 @@
-.form-input:focus,
-.form-textarea:focus,
-.form-multiselect:focus,
-.form-select:focus {
-    @apply focus:ring-2 focus:ring-sky-200 dark:focus:ring-0;
-}
-
-.form-checkbox:focus,
-.form-radio:focus {
-    @apply focus:ring-0;
-}
-
 /* Hamburger button */
 .hamburger svg>*:nth-child(1),
 .hamburger svg>*:nth-child(2),

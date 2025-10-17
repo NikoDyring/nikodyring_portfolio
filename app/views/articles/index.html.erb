@@ -1,4 +1,4 @@
-
+<!-- Hero -->
 <section>
   <div class="max-w-[700px]">
     <div class="pt-8 pb-10">
@@ -8,6 +8,8 @@
     </div>
   </div>
 </section>
+
+<!-- Content -->
 <div class="grow md:flex space-y-8 md:space-y-0 md:space-x-8 pb-16 md:pb-20">
   <!-- Middle area -->
   <div class="grow">
@@ -19,25 +21,28 @@
 
           <!-- Filters -->
           <ul class="flex flex-wrap text-sm border-b border-slate-100 dark:border-slate-800">
-            <% Article.categories.each do |category, value| %>
+            <% Article.categories&.each do |category, value| %>
               <% if category.to_s != 'uncategorized' %>
                 <li class="px-3 -mb-px">
-                  <%= link_to category.to_s.titleize, articles_path(category: category, locale: I18n.locale), class: active_category_link(category, params[:category]), data: { 'turbo-frame': 'article_list'}  %>
+                  <%= link_to category.to_s.titleize, articles_path(category: category, locale: params[:locale]), class: active_category_link(category, params[:category]), data: { 'turbo-frame': 'article_list'}  %>
                 </li>
               <% end %>
             <% end %>
           </ul>
 
           <!-- Articles list -->
-          <%= turbo_frame_tag 'article_list' do %>
-            <% @articles.published.sort_by{ |e| e.published_at }.reverse.each do |article| %>
-              <%= render 'articles/partials/article', article: article %>
-            <% end %>
+          <%= turbo_frame_tag 'article_list' if @articles.present? do %>
+            <div>
+              <% @articles.published.sort_by{ |e| e.published_at }.reverse.each do |article| %>
+                <%= render 'articles/partials/article', article: article %>
+              <% end %>
+            </div>
           <% end %>
         </section>
         <!-- Projects -->
         <section>
           <h2 class="font-aspekta text-xl font-[650] mb-5"><%= t('views.articles.index.projects.header') %></h2>
+          
           <!-- Cards -->
           <div class="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-5">
             <%= link_to 'https://github.com/NikoDyring/personal_portfolio', class:"rounded-lg border border-slate-200 dark:border-slate-800 dark:bg-gradient-to-t dark:from-slate-800 dark:to-slate-800/30 odd:-rotate-1 even:rotate-1 hover:rotate-0 transition-transform duration-700 hover:duration-100 ease-in-out p-5" do %>

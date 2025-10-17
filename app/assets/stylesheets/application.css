@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require application.tailwind
  *= require style
  *= require additional-styles/custom-fonts
  *= require additional-styles/utility-patterns
