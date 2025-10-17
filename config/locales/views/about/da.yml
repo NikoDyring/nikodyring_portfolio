@@ -2,7 +2,7 @@ da:
   views:
     about:
       index:
-        header_html: "Jeg er Nikolaj <a href='https://github.com/NikoDyring', target='_blank'><span class='inline-flex relative text-sky-500 before:absolute before:inset-0 before:bg-sky-200 dark:before:bg-sky-500 before:opacity-30 before:-z-10 before:-rotate-2 before:translate-y-1/4'>@NikoDyring</span></a> Jensen 🤟"
+        header_html: "Jeg er Nikolaj <a href='https://github.com/NikoDyring', target='_blank'><span class='inline-flex relative text-sky-500 before:absolute before:inset-0 before:bg-sky-200 dark:before:bg-sky-500 before:opacity-30 before:-z-10 before:-rotate-2 before:translate-y-1/4'>@NikoDyring</span></a> Dyring 🤟"
         short_bio:
           title: 'Kort Introduktion'
           text_html: "Mit navn er Nikolaj Dyring, og jeg brænder for at lære de nyeste og bedste teknologier, uanset om det er frontend eller backend. Jeg nyder at skabe interessante og responsive applikationer med fokus på brugervenlighed og testing. Jeg elsker at arbejde i hurtige miljøer. Jeg excellerer i at samarbejde med teams med forskellige vidensæt. En alsidig programmør med interesser inden for softwareudvikling, VR/AR og spiludvikling. Tilpasningsdygtig og selvmotiveret lærende. Interesseret i nye programmeringsteknologier og løbende selvforbedring. Jeg er i øjeblikket ikke på udkig efter nye muligheder. <br><br> Selv om der ikke er en Wikipedia-side om mig (undskyld folkens!), er der en karrieretidslinje nedenfor."
