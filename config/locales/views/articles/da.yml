@@ -3,7 +3,7 @@ da:
     articles:
       index:
         introduction:
-          header_html: "Jeg skriver om min rejse som <span class='inline-flex relative text-sky-500 before:absolute before:inset-0 before:bg-sky-200 dark:before:bg-sky-500 before:opacity-30 before:-z-10 before:-rotate-2 before:translate-y-1/4'>aspirerende</span> udvikler."
+          header_html: "Jeg bygger software, køre motorcykel og jagter <span class='inline-flex relative text-sky-500 before:absolute before:inset-0 before:bg-sky-200 dark:before:bg-sky-500 before:opacity-30 before:-z-10 before:-rotate-2 before:translate-y-1/4'>finansiel</span> frihed."
           header_text: 'Motorcyklist, tech-nørd og aspirerende udvikler. Jeg skriver om kode, prototyping og min rejse til at blive en dygtigere udvikler. 🚀'
         articles:
           header: 'Seneste Indlæg'
