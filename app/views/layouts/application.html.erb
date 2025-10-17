@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nikolaj Dyring Jensen - RoR Developer</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", type: 'module' %>
+
+    <%= javascript_importmap_tags %>
+    <script>
+        if (localStorage.getItem('dark-mode') === 'false' || !('dark-mode' in localStorage)) {
+            document.querySelector('html').classList.remove('dark');
+        } else {
+            document.querySelector('html').classList.add('dark');
+        }
+    </script>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+
+  <body class="font-inter antialiased bg-white text-slate-800 dark:bg-slate-900 dark:text-slate-200 tracking-tight">
+    <div class="max-w-7xl mx-auto">
+      <div class="min-h-screen flex">
+        <%= render 'partials/sidebar' %>
+        <main class="grow overflow-hidden px-6">
+          <div class="w-full h-full max-w-[1072px] mx-auto flex flex-col">
+            <%= render 'partials/header' %>
+            <%= yield %>
+            <%= render 'articles/partials/footer' %>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

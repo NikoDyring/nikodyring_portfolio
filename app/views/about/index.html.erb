@@ -1,0 +1,154 @@
+<!-- Content -->
+<div class="grow md:flex space-y-8 md:space-y-0 md:space-x-8 pt-12 md:pt-16 pb-16 md:pb-20">
+  <!-- Middle area -->
+  <div class="grow">
+    <div class="max-w-[700px]">
+      <section>
+        <!-- Page title -->
+        <h1 class="h2 font-aspekta mb-5"><%= t('views.about.index.header_html') %></h1>
+        <%= image_tag(asset_path('about_me.png'), class: 'w-full', height: 390, width: 692, alt: 'About me') %>
+        <!-- Page content -->
+        <div class="text-slate-500 dark:text-slate-400 space-y-8">
+          <div class="space-y-4">
+            <h2 class="h3 font-aspekta text-slate-800 dark:text-slate-100"><%= t('views.about.index.short_bio.title') %></h2>
+            <%= t('views.about.index.short_bio.text_html') %>
+          </div>
+          <div class="space-y-4">
+            <h2 class="h3 font-aspekta text-slate-800 dark:text-slate-100"><%= t('views.about.index.experience.title') %></h2>
+            <ul class="-my-2">
+              <!-- Role -->
+              <li class="relative py-2">
+                <div class="flex items-start mb-1">
+                  <div class="absolute left-0 h-full w-px bg-slate-200 dark:bg-slate-800 self-start ml-[28px] -translate-x-1/2 translate-y-3" aria-hidden="true"></div>
+                  <div class="absolute left-0 h-14 w-14 flex items-center justify-center border border-slate-200 dark:border-slate-800 dark:bg-gradient-to-t dark:from-slate-800 dark:to-slate-800/30 bg-white dark:bg-slate-900 rounded-full">
+                    <%= image_tag(asset_path('egdk.png'), class: 'rounded-full', width: '48', height: '48') %>
+                  </div>
+                  <div class="pl-20 space-y-1">
+                    <div class="text-xs text-slate-500 uppercase">March 2024 <span class="text-slate-400 dark:text-slate-600">·</span> Currently</div>
+                    <div class="font-aspekta font-[650] text-slate-800 dark:text-slate-100">Software Developer</div>
+                    <div class="text-sm font-medium text-slate-800 dark:text-slate-100"><%= link_to 'EG Danmark A/S', 'https://eg.dk', target: 'blank' %></div>
+                    <div class="text-sm text-slate-500 dark:text-slate-400">
+                      To Be Announced
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <!-- Role -->
+              <li class="relative py-2">
+                <div class="flex items-start mb-1">
+                  <div class="absolute left-0 h-full w-px bg-slate-200 dark:bg-slate-800 self-start ml-[28px] -translate-x-1/2 translate-y-3" aria-hidden="true"></div>
+                  <div class="absolute left-0 h-14 w-14 flex items-center justify-center border border-slate-200 dark:border-slate-800 dark:bg-gradient-to-t dark:from-slate-800 dark:to-slate-800/30 bg-white dark:bg-slate-900 rounded-full">
+                    <%= image_tag(asset_path('inpay.webp'), class: 'rounded-full', width: '64', height: '64') %>
+                  </div>
+                  <div class="pl-20 space-y-1">
+                    <div class="text-xs text-slate-500 uppercase">May 2023 <span class="text-slate-400 dark:text-slate-600">·</span> March 2024</div>
+                    <div class="font-aspekta font-[650] text-slate-800 dark:text-slate-100">Ruby on Rails Developer</div>
+                    <div class="text-sm font-medium text-slate-800 dark:text-slate-100"><%= link_to 'Inpay A/S', 'https://inpay.com', target: 'blank' %></div>
+                    <div class="text-sm text-slate-500 dark:text-slate-400">
+                      Develop new integrations to external providers
+                      <br>
+                      Work closely with stakeholders, developers and Team Lead to understand business requirements, and transform them into functional software
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <!-- Role -->
+              <li class="relative py-2">
+                <div class="flex items-start mb-1">
+                  <div class="absolute left-0 h-full w-px bg-slate-200 dark:bg-slate-800 self-start ml-[28px] -translate-x-1/2 translate-y-3" aria-hidden="true"></div>
+                  <div class="absolute left-0 h-14 w-14 flex items-center justify-center border border-slate-200 dark:border-slate-800 dark:bg-gradient-to-t dark:from-slate-800 dark:to-slate-800/30 bg-white dark:bg-slate-900 rounded-full">
+                    <%= image_tag(asset_path('simplytv.png'), width: '32', height: '32') %>
+                  </div>
+                  <div class="pl-20 space-y-1">
+                    <div class="text-xs text-slate-500 uppercase">Jan 2023 <span class="text-slate-400 dark:text-slate-600">·</span> Mar 2023</div>
+                    <div class="font-aspekta font-[650] text-slate-800 dark:text-slate-100">Software Engineer</div>
+                    <div class="text-sm font-medium text-slate-800 dark:text-slate-100"><%= link_to 'Simply TV', 'https://simply.tv', target: 'blank' %></div>
+                    <div class="text-sm text-slate-500 dark:text-slate-400">
+                      Development of JSON, XLSX, Email and XLS parsers to receive data from partners to present to our customers. Test-driven Development using Rspec
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <!-- Role -->
+              <li class="relative py-2">
+                <div class="flex items-start mb-1">
+                  <div class="absolute left-0 h-full w-px bg-slate-200 dark:bg-slate-800 self-start ml-[28px] -translate-x-1/2 translate-y-3" aria-hidden="true"></div>
+                  <div class="absolute left-0 h-14 w-14 flex items-center justify-center border border-slate-200 dark:border-slate-800 dark:bg-gradient-to-t dark:from-slate-800 dark:to-slate-800/30 bg-white dark:bg-slate-900 rounded-full">
+                    <%= image_tag(asset_path('group_logistic.png'), width: 32, height: 32) %>
+                  </div>
+                  <div class="pl-20 space-y-1">
+                    <div class="text-xs text-slate-500 uppercase">May 2021<span class="text-slate-400 dark:text-slate-600">·</span> Dec 2022</div>
+                    <div class="font-aspekta font-[650] text-slate-800 dark:text-slate-100">Developer</div>
+                    <div class="text-sm font-medium text-slate-800 dark:text-slate-100"><%= link_to 'Group Logistic ApS', 'https://Hverdag.dk', target: 'blank' %></div>
+                    <div class="text-sm text-slate-500 dark:text-slate-400">
+                      In my role as a Developer for Group Logistic ApS, I was responsible for:
+                      <br>
+                      Keep the system up to date, by upgrading both ruby and rails versions.
+                      <br>
+                      Set up our webshop to be dockerized and orchestrated with Kubernetes using Kuby.io
+                      <br>
+                      Third-party service integrations (such as Klaviyo, GTM, Meta Pixel, Reepay and Trustpilot)
+                      <br>
+                      Development of our package system for our Warehouse. (Scanning, printing labels, sending emails to customers and so on)
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <!-- Role -->
+              <li class="relative py-2">
+                <div class="flex items-start mb-1">
+                  <div class="absolute left-0 h-full w-px bg-slate-200 dark:bg-slate-800 self-start ml-[28px] -translate-x-1/2 translate-y-3" aria-hidden="true"></div>
+                  <div class="absolute left-0 h-14 w-14 flex items-center justify-center border border-slate-200 dark:border-slate-800 dark:bg-gradient-to-t dark:from-slate-800 dark:to-slate-800/30 bg-white dark:bg-slate-900 rounded-full">
+                    <%= image_tag(asset_path('piboco.png'), width: 32, height: 32) %>
+                  </div>
+                  <div class="pl-20 space-y-1">
+                    <div class="text-xs text-slate-500 uppercase">Feb 2020 <span class="text-slate-400 dark:text-slate-600">·</span> Dec 2020</div>
+                    <div class="font-aspekta font-[650] text-slate-800 dark:text-slate-100">Backend Developer</div>
+                    <div class="text-sm font-medium text-slate-800 dark:text-slate-100"><%= link_to 'PIBOCO', 'https://www.piboco.com/en/', target: 'blank' %></div>
+                    <div class="text-sm text-slate-500 dark:text-slate-400">
+                      Add and structure data in a real time database.
+                      <br>
+                      Implement and use Firebase SDK in our Unity Application.
+                      <br>
+                      Convert & Migrate current data to our real time database.
+                      <br>
+                      Build web-application to handle promotional codes and analytics for our publishers.
+                      <br>
+                      Add CRUD to this application for titles.
+                      <br>
+                      User management
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <!-- Role -->
+              <li class="relative py-2">
+                <div class="flex items-start mb-1">
+                  <div class="absolute left-0 h-14 w-14 flex items-center justify-center border border-slate-200 dark:border-slate-800 dark:bg-gradient-to-t dark:from-slate-800 dark:to-slate-800/30 bg-white dark:bg-slate-900 rounded-full">
+                    <%= image_tag(asset_path('question.png'), width: 32, height: 32) %>
+                  </div>
+                  <div class="pl-20 space-y-1">
+                    <div class="text-xs text-slate-500 uppercase">Apr 2018 <span class="text-slate-400 dark:text-slate-600">·</span> Sep 2018</div>
+                    <div class="font-aspekta font-[650] text-slate-800 dark:text-slate-100">Junior Software Developer</div>
+                    <div class="text-sm font-medium text-slate-800 dark:text-slate-100">SLD Consulting</div>
+                    <div class="text-sm text-slate-500 dark:text-slate-400">Worked as a junior developer / junior consultant. Had the pleasure of being sourced to Norden DS to create some tools for their developers, but also some integration work.</div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="space-y-4">
+            <h2 class="h3 font-aspekta text-slate-800 dark:text-slate-100"><%= t('views.about.index.lets_connect.title') %></h2>
+            <%= t('views.about.index.lets_connect.text_html') %>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+  <!-- Right sidebar -->
+  <aside class="md:w-[240px] lg:w-[300px] shrink-0">
+    <div class="space-y-6">
+    </div>
+  </aside>
+</div>
