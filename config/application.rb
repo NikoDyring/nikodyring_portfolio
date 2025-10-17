@@ -17,7 +17,7 @@ module NikodyringPortfolio
     config.autoload_lib(ignore: %w[assets tasks])
 
 
-    config.i18n.available_locales = [:en, :da]
+    config.i18n.available_locales = [ :en, :da ]
 
     # Configuration for the application, engines, and railties goes here.
     #

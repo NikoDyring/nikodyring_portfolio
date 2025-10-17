@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root to: redirect("/#{I18n.default_locale}/articles")
 
   scope "/:locale" do

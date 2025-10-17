@@ -11,7 +11,7 @@ class Article < ApplicationRecord
   validates :category, presence: true
   validates :status, presence: true
 
-  after_commit :set_published_at, on: [:create, :update], if: :article_published?
+  after_commit :set_published_at, on: [ :create, :update ], if: :article_published?
 
   private
 
