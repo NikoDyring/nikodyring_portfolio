@@ -30,7 +30,7 @@ gem "turbo-rails"
 
 # Styling
 gem "tailwindcss-ruby", "~> 4.1"
-gem "tailwindcss-rails", "~> 4.3"
+gem "tailwindcss-rails", "~> 4.4"
 
 # Platform-specific gems
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
