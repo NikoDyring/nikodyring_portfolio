@@ -41,7 +41,6 @@ env:
     POSTGRES_DB: nikodyring_portfolio_production
     DB_HOST: nikodyring_portfolio-db
     REDIS_URL: redis://nikodyring_portfolio-redis:6379/0
-    SOLID_QUEUE_IN_PUMA: false
     JOB_CONCURRENCY: 5
   secret:
     - RAILS_MASTER_KEY
