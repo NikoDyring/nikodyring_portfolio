@@ -10,40 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_17_095116) do
+ActiveRecord::Schema[8.1].define(version: 2025_10_17_095116) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "articles", force: :cascade do |t|
+    t.integer "category", default: 0
+    t.datetime "created_at", null: false
     t.string "headline"
+    t.datetime "published_at"
+    t.integer "status", default: 0
     t.string "subtitle"
     t.string "text"
-    t.integer "category", default: 0
-    t.integer "status", default: 0
-    t.datetime "published_at"
-    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
-    t.string "url"
-    t.integer "status", default: 0
     t.integer "category", default: 0
-    t.integer "programming_language", default: 0
     t.datetime "created_at", null: false
+    t.string "description"
+    t.integer "programming_language", default: 0
+    t.integer "status", default: 0
+    t.string "title"
     t.datetime "updated_at", null: false
+    t.string "url"
   end
 
   create_table "users", force: :cascade do |t|
+    t.datetime "created_at", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "name", default: "John Doe", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
+    t.datetime "reset_password_sent_at"
+    t.string "reset_password_token"
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

@@ -2,33 +2,65 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: <%= ENV.fetch("DB_HOST", "nikodyring_portfolio-db") %>
-  username: <%= ENV.fetch("POSTGRES_USER", "nikodyring_portfolio") %>
-  password: <%= ENV["POSTGRES_PASSWORD"] %>
 
 development:
-  <<: *default
-  database: nikodyring_portfolio_development
+  primary:
+    <<: *default
+    host: localhost
+    username: nikodyring_portfolio
+    password: password
+    database: nikodyring_portfolio_development
+  
+  queue:
+    <<: *default
+    host: localhost
+    username: nikodyring_portfolio
+    password: password
+    database: nikodyring_portfolio_development_queue
+    migrations_paths: db/queue_migrate
+
+  cable:
+    <<: *default
+    host: localhost
+    username: nikodyring_portfolio
+    password: password
+    database: nikodyring_portfolio_development_cable
+    migrations_paths: db/cable_migrate
+
+  cache:
+    <<: *default
+    host: localhost
+    username: nikodyring_portfolio
+    password: password
+    database: nikodyring_portfolio_development_cache
+    migrations_paths: db/cache_migrate
 
 test:
   <<: *default
+  host: localhost
+  username: nikodyring_portfolio
+  password: password
   database: nikodyring_portfolio_test
 
 production:
-  <<: *default
-  database: nikodyring_portfolio_production
+  host: <%= ENV.fetch("DB_HOST", "nikodyring_portfolio-db") %>
+  username: <%= ENV.fetch("POSTGRES_USER", "nikodyring_portfolio") %>
+  password: <%= ENV["POSTGRES_PASSWORD"] %>
+  primary:
+    <<: *default
+    database: nikodyring_portfolio_production
+  queue:
+    <<: *default
+    database: nikodyring_portfolio_production_queue
+    migrations_paths: db/queue_migrate
 
-queue:
-  <<: *default
-  database: nikodyring_portfolio_production
-  migrations_paths: db/queue_migrate
+  cable:
+    <<: *default
+    database: nikodyring_portfolio_production_cable
+    migrations_paths: db/cable_migrate
 
-cable:
-  <<: *default
-  database: nikodyring_portfolio_production
-  migrations_paths: db/cable_migrate
+  cache:
+    <<: *default
+    database: nikodyring_portfolio_production_cache
+    migrations_paths: db/cache_migrate
 
-cache:
-  <<: *default
-  database: nikodyring_portfolio_production
-  migrations_paths: db/cache_migrate
