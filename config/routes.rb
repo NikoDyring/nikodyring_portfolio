@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   root to: redirect("/#{I18n.default_locale}/articles")
 
@@ -7,6 +9,9 @@ Rails.application.routes.draw do
     resources :projects
     devise_for :users
   end
+
+  mount Sidekiq::Web => "/sidekiq"
+
   # Health Check
   get "up" => "rails/health#show", as: :rails_health_check
 end

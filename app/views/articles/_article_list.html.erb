@@ -1,0 +1,22 @@
+<!-- Categories -->
+<ul class="flex flex-wrap text-sm border-b border-slate-100 dark:border-slate-800">
+  <% Article.categories&.each do |category, value| %>
+    <% if category.to_s != 'uncategorized' %>
+      <li class="px-3 -mb-px">
+        <%= link_to category.to_s.titleize, articles_path(category: category, locale: params[:locale]), class: active_category_link(category, defined?(current_category) ? current_category : params[:category]), data: { turbo_frame: 'article_list', turbo_action: 'replace' } %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<% if articles.any? %>
+  <div>
+    <% articles.each do |article| %>
+      <%= render 'articles/article', article: article %>
+    <% end %>
+  </div>
+<% else %>
+  <div class="text-slate-500 dark:text-slate-400 py-8">
+    <p><%= t('views.articles.index.articles.no_articles_found_in_category') %></p>
+  </div>
+<% end %>

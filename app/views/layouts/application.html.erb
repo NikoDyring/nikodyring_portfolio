@@ -14,6 +14,27 @@
         } else {
             document.querySelector('html').classList.add('dark');
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+          const lightSwitch = document.getElementById('light-switch');
+          
+          if (lightSwitch) {
+            // Check current state and set checkbox accordingly
+            const isDarkMode = localStorage.getItem('dark-mode') === 'true';
+            lightSwitch.checked = isDarkMode;
+            
+            // Listen for toggle changes
+            lightSwitch.addEventListener('change', function() {
+              if (this.checked) {
+                document.querySelector('html').classList.add('dark');
+                localStorage.setItem('dark-mode', 'true');
+              } else {
+                document.querySelector('html').classList.remove('dark');
+                localStorage.setItem('dark-mode', 'false');
+              }
+            });
+          }
+        });
     </script>
   </head>
 

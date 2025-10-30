@@ -18,6 +18,7 @@ module NikodyringPortfolio
 
 
     config.i18n.available_locales = [ :en, :da ]
+    config.active_job.queue_adapter = :sidekiq
 
     # Configuration for the application, engines, and railties goes here.
     #
