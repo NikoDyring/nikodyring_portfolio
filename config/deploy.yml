@@ -40,7 +40,7 @@ env:
     POSTGRES_USER: nikodyring_portfolio
     POSTGRES_DB: nikodyring_portfolio_production
     DB_HOST: nikodyring_portfolio-db
-    REDIS_URL: redis://nikodyring_portfolio-redis:6379/0
+    SOLID_QUEUE_IN_PUMA: true
     JOB_CONCURRENCY: 5
   secret:
     - RAILS_MASTER_KEY
@@ -59,11 +59,6 @@ accessories:
         - POSTGRES_PASSWORD
     directories:
       - "nikodyring_portfolio_db_data:/var/lib/postgresql"
-  redis:
-    image: redis:7.0
-    host: 188.245.219.60
-    directories:
-      - "nikodyring_portfolio_redis_data:/data"
 
 aliases:
   console: app exec --interactive --reuse "bin/rails console"

@@ -17,3 +17,8 @@ test:
 production:
   <<: *default
   database: nikodyring_portfolio_production
+
+queue:
+  <<: *default
+  database: nikodyring_portfolio_production
+  migrations_paths: db/queue_migrate
