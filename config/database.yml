@@ -4,63 +4,70 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
-  primary:
+  primary: &primary_development
     <<: *default
+    database: nikodyring_portfolio_development
     host: localhost
     username: nikodyring_portfolio
     password: password
-    database: nikodyring_portfolio_development
   
   queue:
-    <<: *default
-    host: localhost
-    username: nikodyring_portfolio
-    password: password
+    <<: *primary_development
     database: nikodyring_portfolio_development_queue
     migrations_paths: db/queue_migrate
 
   cable:
-    <<: *default
-    host: localhost
-    username: nikodyring_portfolio
-    password: password
+    <<: *primary_development
     database: nikodyring_portfolio_development_cable
     migrations_paths: db/cable_migrate
 
   cache:
-    <<: *default
-    host: localhost
-    username: nikodyring_portfolio
-    password: password
+    <<: *primary_development
     database: nikodyring_portfolio_development_cache
     migrations_paths: db/cache_migrate
 
 test:
-  <<: *default
-  host: localhost
-  username: nikodyring_portfolio
-  password: password
-  database: nikodyring_portfolio_test
-
-production:
-  host: <%= ENV.fetch("DB_HOST", "nikodyring_portfolio-db") %>
-  username: <%= ENV.fetch("POSTGRES_USER", "nikodyring_portfolio") %>
-  password: <%= ENV["POSTGRES_PASSWORD"] %>
-  primary:
+  primary: &primary_test
     <<: *default
-    database: nikodyring_portfolio_production
+    database: nikodyring_portfolio_test
+    host: localhost
+    username: nikodyring_portfolio
+    password: password
+  
   queue:
-    <<: *default
-    database: nikodyring_portfolio_production_queue
+    <<: *primary_test
+    database: nikodyring_portfolio_test_queue
     migrations_paths: db/queue_migrate
 
   cable:
-    <<: *default
-    database: nikodyring_portfolio_production_cable
+    <<: *primary_test
+    database: nikodyring_portfolio_test_cable
     migrations_paths: db/cable_migrate
 
   cache:
-    <<: *default
-    database: nikodyring_portfolio_production_cache
+    <<: *primary_test
+    database: nikodyring_portfolio_test_cache
     migrations_paths: db/cache_migrate
 
+production:
+  primary: &primary_production
+    <<: *default
+    database: <%= ENV.fetch("POSTGRES_DB") { "nikodyring_portfolio_production" } %>
+    host: <%= ENV.fetch("DB_HOST") { "nikodyring_portfolio-db" } %>
+    username: <%= ENV.fetch("POSTGRES_USER") { "nikodyring_portfolio" } %>
+    password: <%= ENV["POSTGRES_PASSWORD"] %>
+  
+  queue:
+    <<: *primary_production
+    database: <%= ENV.fetch("POSTGRES_DB") { "nikodyring_portfolio_production" } %>_queue
+    migrations_paths: db/queue_migrate
+
+  cable:
+    <<: *primary_production
+    database: <%= ENV.fetch("POSTGRES_DB") { "nikodyring_portfolio_production" } %>_cable
+    migrations_paths: db/cable_migrate
+
+  cache:
+    <<: *primary_production
+    database: <%= ENV.fetch("POSTGRES_DB") { "nikodyring_portfolio_production" } %>_cache
+    migrations_paths: db/cache_migrate
