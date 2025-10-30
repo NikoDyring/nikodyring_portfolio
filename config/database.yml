@@ -27,3 +27,8 @@ cable:
   <<: *default
   database: nikodyring_portfolio_production
   migrations_paths: db/cable_migrate
+
+cache:
+  <<: *default
+  database: nikodyring_portfolio_production
+  migrations_paths: db/cache_migrate
