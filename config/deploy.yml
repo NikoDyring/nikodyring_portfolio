@@ -8,14 +8,18 @@ image: nikodyring/nikodyring_portfolio
 servers:
   web:
     - 188.245.219.60
-  job:
-    - 188.245.219.60
-    cmd: bundle exec sidekiq -C config/sidekiq.yml
 
-# Enable SSL auto certification via Let's Encrypt
+# Enable SSL auto certification via Let's Encrypt and allow for multiple apps on a single web server.
+# Remove this section when using multiple web servers and ensure you terminate SSL at your load balancer.
+#
+# Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
 proxy:
   ssl: true
   host: nikodyring.dev
+  healthcheck: 
+    interval: 3
+    path: /up
+    timeout: 5
 
 # Credentials for your image host.
 registry:
@@ -24,45 +28,30 @@ registry:
   password:
     - KAMAL_REGISTRY_PASSWORD
 
-# Inject ENV variables into containers (secrets come from .kamal/secrets)
-env:
-  secret:
-    - RAILS_MASTER_KEY
-    - POSTGRES_PASSWORD
-  clear:
-    SOLID_QUEUE_IN_PUMA: false
-    JOB_CONCURRENCY: 5
-    DB_HOST: db
-    REDIS_HOST: redis
-    POSTGRES_USER: nikodyring_portfolio
-    POSTGRES_DB: nikodyring_portfolio_production
+ssh: 
+  user: app
+  keys: ["~/.ssh/id_ed25519"]
 
-# Aliases
-aliases:
-  console: app exec --interactive --reuse "bin/rails console"
-  shell: app exec --interactive --reuse "bash"
-  logs: app logs -f
-  dbc: app exec --interactive --reuse "bin/rails dbconsole"
-
-# Persistent storage
-volumes:
-  - "nikodyring_portfolio_storage:/rails/storage"
-  - "nikodyring_portfolio_db_data:/var/lib/postgresql/data"
-  - "nikodyring_portfolio_redis_data:/data"
-
-# Bridge fingerprinted assets
-asset_path: /rails/public/assets
-
-# Image builder
 builder:
   arch: amd64
 
-# Accessories: PostgreSQL and Redis
+env:
+  clear:
+    POSTGRES_USER: nikodyring_portfolio
+    POSTGRES_DB: nikodyring_portfolio_production
+    DB_HOST: nikodyring_portfolio-db
+    REDIS_URL: redis://nikodyring_portfolio-redis:6379/0
+    SOLID_QUEUE_IN_PUMA: false
+    JOB_CONCURRENCY: 5
+  secret:
+    - RAILS_MASTER_KEY
+    - POSTGRES_PASSWORD
+
 accessories:
   db:
     image: postgres:18
-    host: db
-    port: 5432
+    host: 188.245.219.60
+    port: "5433:5432"
     env:
       clear:
         POSTGRES_USER: nikodyring_portfolio
@@ -70,10 +59,15 @@ accessories:
       secret:
         - POSTGRES_PASSWORD
     directories:
-      - nikodyring_portfolio_db_data:/var/lib/postgresql/data
-
+      - "nikodyring_portfolio_db_data:/var/lib/postgresql"
   redis:
-    image: redis:8.2
-    host: redis
+    image: redis:7.0
+    host: 188.245.219.60
     directories:
-      - nikodyring_portfolio_redis_data:/data
+      - "nikodyring_portfolio_redis_data:/data"
+
+aliases:
+  console: app exec --interactive --reuse "bin/rails console"
+  shell: app exec --interactive --reuse "bash"
+  logs: app logs -f
+  dbc: app exec --interactive --reuse "bin/rails dbconsole"
