@@ -14,6 +14,10 @@ class DarkModeToggle {
     } else {
       this.setupToggle();
     }
+
+    // Reinitialize after Turbo navigation (for locale switching)
+    document.addEventListener('turbo:load', () => this.setupToggle());
+    document.addEventListener('turbo:render', () => this.applySavedTheme());
   }
 
   applySavedTheme() {
@@ -31,12 +35,16 @@ class DarkModeToggle {
     const lightSwitch = document.getElementById('light-switch');
     
     if (lightSwitch) {
+      // Remove any existing event listeners to prevent duplicates
+      const newLightSwitch = lightSwitch.cloneNode(true);
+      lightSwitch.parentNode.replaceChild(newLightSwitch, lightSwitch);
+      
       // Set initial state
       const isDarkMode = localStorage.getItem('dark-mode') === 'true';
-      lightSwitch.checked = isDarkMode;
+      newLightSwitch.checked = isDarkMode;
       
       // Listen for changes
-      lightSwitch.addEventListener('change', (e) => this.handleToggle(e));
+      newLightSwitch.addEventListener('change', (e) => this.handleToggle(e));
     }
   }
 
