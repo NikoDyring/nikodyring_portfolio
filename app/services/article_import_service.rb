@@ -1,8 +1,4 @@
 class ArticleImportService
-  require 'net/http'
-  require 'uri'
-  require 'stringio'
-  
   def initialize(api_service = nil)
     @api_service = api_service || DevToApiService.new('nikodyring')
   end
@@ -61,8 +57,10 @@ class ArticleImportService
       )
     end
 
-    # Attach thumbnail from social_image URL if present and not already attached
-    attach_thumbnail_from_url(article, article_data['social_image']) if article_data['social_image'].present?
+    # Store external image URL instead of downloading
+    if article_data['social_image'].present?
+      article.update!(external_image_url: article_data['social_image'])
+    end
 
     article
   end
@@ -90,42 +88,5 @@ class ArticleImportService
     nil
   end
 
-  def attach_thumbnail_from_url(article, image_url)
-    return if image_url.blank? || article.thumbnail.attached?
 
-    uri = URI.parse(image_url)
-    
-    # Download the image
-    response = Net::HTTP.get_response(uri)
-    
-    if response.is_a?(Net::HTTPSuccess)
-      # Extract filename from URL or use a default
-      filename = extract_filename_from_url(image_url) || "thumbnail_#{article.external_id}.jpg"
-      
-      # Attach the downloaded image
-      article.thumbnail.attach(
-        io: StringIO.new(response.body),
-        filename: filename,
-        content_type: response.content_type || 'image/jpeg'
-      )
-      
-      Rails.logger.info "Attached thumbnail for article #{article.external_id}: #{filename}"
-    else
-      Rails.logger.warn "Failed to download thumbnail for article #{article.external_id}: #{response.code} #{response.message}"
-    end
-  rescue StandardError => e
-    Rails.logger.error "Error attaching thumbnail for article #{article.external_id}: #{e.message}"
-  end
-
-  def extract_filename_from_url(url)
-    return nil if url.blank?
-    
-    uri = URI.parse(url)
-    filename = File.basename(uri.path)
-    
-    # Return filename if it has an extension, otherwise nil
-    filename.include?('.') ? filename : nil
-  rescue StandardError
-    nil
-  end
 end

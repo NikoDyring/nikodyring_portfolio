@@ -13,6 +13,20 @@ class Article < ApplicationRecord
 
   after_commit :set_published_at, on: [ :create, :update ], if: :article_published?
 
+  # Get the image URL, preferring external URL over Active Storage
+  def image_url
+    return external_image_url if external_image_url.present?
+    return Rails.application.routes.url_helpers.rails_blob_url(thumbnail, only_path: false) if thumbnail.attached?
+    nil
+  end
+
+  # Get just the image path (for internal use)
+  def image_path
+    return external_image_url if external_image_url.present?
+    return Rails.application.routes.url_helpers.rails_blob_path(thumbnail) if thumbnail.attached?
+    nil
+  end
+
   private
 
   def article_published?
