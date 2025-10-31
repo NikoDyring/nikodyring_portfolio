@@ -67,3 +67,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "httparty", "~> 0.23.2"
+
+gem "byebug", "~> 12.0"
