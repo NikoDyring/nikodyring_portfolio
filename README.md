@@ -1,24 +1,8 @@
-## README
+# 🌍 Nikodyring.dev
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Tech
+* Ruby 3.1.2
+* Rails 7.0.4.3
+* Deployed on a DigitalOcean droplet using Capistrano
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The design is from [Cruip](https://cruip.com), using Tailwindcss. Have in mind I have a written agreement with Cruip about having this portfolio as a public repository. Buy a license for their templates & deisgns, in case you'd like to use them. Don't copy from here. 💣

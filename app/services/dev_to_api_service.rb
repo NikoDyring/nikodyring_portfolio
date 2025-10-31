@@ -1,6 +1,6 @@
 class DevToApiService
   include HTTParty
-  base_uri 'https://dev.to/api'
+  base_uri "https://dev.to/api"
 
   def initialize(username)
     @username = username
@@ -8,7 +8,7 @@ class DevToApiService
 
   def fetch_articles
     response = self.class.get("/articles", query: { username: @username })
-    
+
     if response.success?
       response.parsed_response
     else
