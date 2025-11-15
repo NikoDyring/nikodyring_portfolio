@@ -1,4 +1,6 @@
 class ArticleImportService
+  DEFAULT_CATEGORY = "lifestyle".freeze
+
   def initialize(api_service = nil)
     @api_service = api_service || DevToApiService.new("nikodyring")
   end
@@ -68,15 +70,24 @@ class ArticleImportService
   def parse_category(tag_list)
     return "general" if tag_list.blank?
 
-    tags = tag_list.is_a?(Array) ? tag_list.map(&:downcase) : [ tag_list.to_s.downcase ]
+    # Normalize tag_list to an array of downcased strings as we don't know how dev.to returns it
+    tags = normalize_tags(tag_list)
 
-    if tags.include?("webdev")
-      "coding"
-    elsif tags.include?("gamedev")
-      "game_development"
-    else
-      "lifestyle"
-    end
+    category_map = {
+      "webdev" => "coding",
+      "gamedev" => "game_development",
+      "gaming" => "gaming",
+      "books" => "books"
+    }
+
+    category_map.find { |tag, _| tags.include?(tag) }&.last || DEFAULT_CATEGORY
+  end
+
+  private
+
+  # Converts tag_list to an array of downcased strings for consistent processing
+  def normalize_tags(tag_list)
+    tag_list.is_a?(Array) ? tag_list.map(&:downcase) : [ tag_list.to_s.downcase ]
   end
 
   def parse_date(date_string)
