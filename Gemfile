@@ -4,7 +4,7 @@ source "https://rubygems.org"
 gem "rails", "~> 8.1.0"
 
 # Authentication
-gem "devise", "~> 4.9"
+gem "devise", "~> 5.0"
 
 # Core application gems
 # Reduces boot times through caching; required in config/boot.rb
